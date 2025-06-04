@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Banco Monedas</title>
+    <link rel="stylesheet" href="politicas.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150x50?text=Banco+Monedas" alt="Logo Banco Monedas" class="logo">
+            <h1>Política de Privacidade</h1>
+        </header>
+        
+        <main>
+            <div class="privacy-text">
+                <p>O banco Monedas coleta seus dados de maneira segura e eficaz, com a finalidade de melhorar a experiência dos seus clientes, seguindo as recomendações e restrições da LGPD (Lei geral de proteção de dados).</p>
+            </div>
+            
+            <div class="question">
+                <p>Você concorda com as políticas acima?</p>
+                <div class="buttons">
+                    <button id="sim-btn" class="btn btn-success">Sim</button>
+                    <button id="nao-btn" class="btn btn-danger">Não</button>
+                </div>
+            </div>
+            
+            <div id="response-message" class="response-message"></div>
+        </main>
+        
+        <footer>
+            <p>© 2023 Banco Monedas - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        const simBtn = document.getElementById('sim-btn');
+        const naoBtn = document.getElementById('nao-btn');
+        const responseMessage = document.getElementById('response-message');
+        
+        simBtn.addEventListener('click', function() {
+            responseMessage.textContent = "Meus parabéns, o Monedas te agradece.";
+            responseMessage.className = "response-message success";
+        });
+        
+        naoBtn.addEventListener('click', function() {
+            responseMessage.textContent = "Concorde com a política de privacidade para prosseguir.";
+            responseMessage.className = "response-message error";
+        });
+    </script>
+</body>
+</html>
