@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso aos Dados</title>
+    <link rel="stylesheet" href="meusdados.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Acesso aos Dados Pessoais</h1>
+        <div id="password-section">
+            <input type="password" id="password-input" placeholder="Digite sua senha">
+            <button id="submit-button">Acessar</button>
+        </div>
+        <div id="data-section" class="hidden">
+            <h2>Seus dados:</h2>
+            <p><strong>CPF:</strong> 111.111.111-11</p>
+            <p><strong>Email:</strong> robisvaldo@gmail.com</p>
+            <p><strong>Gênero:</strong> Masculino</p>
+            <p><strong>Telefone:</strong> (41)95565-1788</p>
+        </div>
+        <div id="error-message" class="hidden"></div>
+    </div>
+    <script>
+        const correctPassword = "Robertao2008#";
+        let attempts = 0;
+        const maxAttempts = 2;
+
+        document.getElementById('submit-button').addEventListener('click', function() {
+            const password = document.getElementById('password-input').value;
+            const dataSection = document.getElementById('data-section');
+            const errorMessage = document.getElementById('error-message');
+            
+            if (password === correctPassword) {
+                dataSection.classList.remove('hidden');
+                errorMessage.classList.add('hidden');
+            } else {
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    errorMessage.textContent = "Número máximo de tentativas atingido. Tente novamente mais tarde.";
+                    errorMessage.classList.remove('hidden');
+                } else {
+                    errorMessage.textContent = "Digite a sua senha corretamente para acessar seus dados!";
+                    errorMessage.classList.remove('hidden');
+                    document.getElementById('password-input').value = '';
+                    document.getElementById('password-input').focus();
+                }
+            }
+        });
+
+        // Permitir submeter com Enter
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('submit-button').click();
+            }
+        });
+    </script>
+</body>
+</html>
